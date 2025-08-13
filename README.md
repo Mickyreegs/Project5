@@ -41,15 +41,52 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 
 
 ## Dataset Content
-* Describe your dataset. Choose a dataset of reasonable size to avoid exceeding the repository's maximum size and to have a shorter model training time. If you are doing an image recognition project, we suggest you consider using an image shape that is 100px × 100px or 50px × 50px, to ensure the model meets the performance requirement but is smaller than 100Mb for a smoother push to GitHub. A reasonably sized image set is ~5000 images, but you can choose ~10000 lines for numeric or textual data. 
+* The dataset is made up of 3 files.  2 are from Kaggle - macro_data_25yrs and nasdq - but one was downloaded from CoinCodex, from whom I sought permission to use their data and they approved.  The 3 datasets are combined based on dates linked to the economic data download.  BitCoin_Close is the target of this project.  There are various economic based columns with which to compare BitCoins performance, from Inflation, Interest Rates, and money supply, to Nasdaq, Gold, and Oil prices.
 
+| Variable         | Meaning                                                     | Units                                                                                |
+|------------------|-------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| Date             | Date (YYYY-MM-DD)                                           | Date (YYYY-MM-DD)                                                                    |
+| Open             | Opening Nasdaq price (Daily)                                | Price (USD)                                                                          |
+| High             | Highest Nasdaq price (Daily)                                | Price (USD)                                                                          |
+| Low              | Lowest Nasdaq price (Daily)                                 | Price (USD)                                                                          |
+| Close            | Closing Nasdaq price (Daily)                                | Price (USD)                                                                          |
+| Volume           | Number of units traded on the Nasdaq Exchange (Daily)       | Units                                                                                |
+| InterestRate     | Federal Reserve interest rate                               | %                                                                                    |
+| ExchangeRate     | USD Exchange Rate                                           | Currency Pair (USD/EUR)                                                              |
+| VIX              | CBOE Volatility Index - A gauge of market sentiment         | Index (as %)                                                                         |
+| TEDSpread        | Treasury to EUR Dollar spread - Perceived credit risk       | Basis Points (Bps)                                                                   |
+| EFFR             | Effective Federal Funds Rate - Actual interest Rate         | %                                                                                    |
+| Gold             | Daily price of Gold                                         | Price (USD)                                                                          |
+| Oil              | Daily price of Oil                                          | Price (USD)                                                                          |
+| M2_Money_Supply  | Money in circulation in the US economy                      | USD (Billions)                                                                       |
+| 10YTreasuryYield | Interest rate paid by the US government pays for borrowing  | %                                                                                    |
+| FedFundsRate     | Federal Reserve interest rate                               | %                                                                                    |
+| CPI              | Consumer Price Index - Measure of Inflation                 | Index (as %)                                                                         |
+| Inflation_Rate_% | Rate of change in CPI                                       | %                                                                                    |
+| SOFR             | Secured Overnight Financing Rate - Overnight borrowing Cost | %                                                                                    |
+| BitCoin_Close    | Closing BitCoin price (Daily)                               | Price (USD)                                                                          |
 
 ## Business Requirements
-* Describe your business requirements
+* The client is an investment firm who wish to use economic factors to predict the future movements/prices of BitCoin.  The business requirements are:
+  * Develop a model that predicts bitcoin price movements based on macroeconomic factors, Nasdaq movements, Oil and Gold prices.  The client would like to predict BitCoin market movements for use in entry and exit points in crypto portfolios.
+  * Generate a dataset that uses only relevant data to reduce data collection in the future.  Use correlation analysis, PPS, and feature importance to reduce data collection costs and improve data governance.
 
 
 ## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision validating it (them) 
+
+* Hypothesis 1:
+  * Macroeconomic factors have influence over BitCoin price movements
+    * Validation requirements:
+      * Test BitCoin prices against macroeconomic factors by using Predictive Power Score (PPS)
+      * Train a regression model to evaluate performance
+      * Compare the trained model to a baseline model
+
+* Hypothesis 2:
+  * BitCoin prices are positively correlated to Nasdaq, Gold and Oil prices and behave similarly under various macroeconomic conditions
+    * Validation requirements:
+      * Use correlation analysis to assess relationships
+      * Visualise trends using graphs
+      * Test consistency against various macroeconomic scenarios e.g. high -v- low inflation
 
 
 ## The rationale to map the business requirements to the Data Visualizations and ML tasks
