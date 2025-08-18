@@ -41,7 +41,7 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 
 
 ## Dataset Content
-* The dataset is made up of 3 files.  2 are from Kaggle - macro_data_25yrs and nasdq - but one was downloaded from CoinCodex, from whom I sought permission to use their data and they approved.  The 3 datasets are combined based on dates linked to the economic data download.  BitCoin_Close is the target of this project.  There are various economic based columns with which to compare BitCoins performance, from Inflation, Interest Rates, and money supply, to Nasdaq, Gold, and Oil prices.
+* The dataset is made up of 3 files.  2 are from Kaggle - macro_data_25yrs and nasdq - but one was downloaded from CoinCodex, from whom I sought permission to use their data and they approved.  The 3 datasets are combined based on dates linked to the economic data download.  BitCoin_Close is the target of this project.  There are various economic based columns with which to compare BitCoin's performance, from Inflation, Interest Rates, and money supply, to Nasdaq, Gold, and Oil prices.
 
 | Variable         | Meaning                                                     | Units                                                                                |
 |------------------|-------------------------------------------------------------|--------------------------------------------------------------------------------------|
