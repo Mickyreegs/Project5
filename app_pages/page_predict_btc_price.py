@@ -1,30 +1,29 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from src.data_management import load_telco_data, load_pkl_file
-from src.machine_learning.evaluate_clf import clf_performance
+from src.machine_learning.data_management import load_btc_data, load_pkl_file
+from src.machine_learning.regression_perf_eval import (
+    regression_performance,
+    regression_evaluation_plots
+)
 
 
-def page_predict_tenure_body():
+def page_predict_btc_price_body():
 
-    # load tenure pipeline files
-    version = 'v1'
-    tenure_pipe = load_pkl_file(
-        f"outputs/ml_pipeline/predict_tenure/{version}/clf_pipeline.pkl")
-    tenure_labels_map = load_pkl_file(
-        f"outputs/ml_pipeline/predict_tenure/{version}/label_map.pkl")
-    tenure_feat_importance = plt.imread(
-        f"outputs/ml_pipeline/predict_tenure/{version}/features_importance.png")
-    X_train = pd.read_csv(
-        f"outputs/ml_pipeline/predict_tenure/{version}/X_train.csv")
-    X_test = pd.read_csv(
-        f"outputs/ml_pipeline/predict_tenure/{version}/X_test.csv")
-    y_train = pd.read_csv(
-        f"outputs/ml_pipeline/predict_tenure/{version}/y_train.csv")
-    y_test = pd.read_csv(
-        f"outputs/ml_pipeline/predict_tenure/{version}/y_test.csv")
+    # load bitcoin pipeline files
+    version = 'v2'
+    btc_pipe = load_pkl_file(
+        f"outputs/ml_pipeline/predict_btc_price/{version}/btc_pipeline_lr.pkl")
+    features_train = pd.read_csv(
+        f"outputs/ml_pipeline/predict_btc_price/{version}/features_train.csv")
+    features_test = pd.read_csv(
+        f"outputs/ml_pipeline/predict_btc_price/{version}/features_test.csv")
+    target_train = pd.read_csv(
+        f"outputs/ml_pipeline/predict_btc_price/{version}/target_train.csv")
+    target_test = pd.read_csv(
+        f"outputs/ml_pipeline/predict_btc_price/{version}/target_test.csv")
 
-    st.write("### ML Pipeline: Predict Prospect Tenure")
+    st.write("### ML Pipeline: Predict Bitcoin Price (30-day forecast)")
     # display pipeline training summary conclusions
     st.info(
         f"* Initially we wanted to have a Regressor model to predict tenure for a likely "
@@ -40,18 +39,16 @@ def page_predict_tenure_body():
 
     # show pipeline steps
     st.write("* ML pipeline to predict tenure when prospect is expected to churn.")
-    st.write(tenure_pipe)
+    st.write(btc_pipe)
     st.write("---")
 
     # show best features
     st.write("* The features the model was trained and their importance.")
-    st.write(X_train.columns.to_list())
-    st.image(tenure_feat_importance)
+    selected_features = features_train.columns.to_list()
+    st.write(selected_features)
     st.write("---")
 
     # evaluate performance on both sets
     st.write("### Pipeline Performance")
-    clf_performance(X_train=X_train, y_train=y_train,
-                    X_test=X_test, y_test=y_test,
-                    pipeline=tenure_pipe,
-                    label_map=tenure_labels_map)
+    regression_performance(features_train, target_train, features_test, target_test, btc_pipe)
+    regression_evaluation_plots(features_train, target_train, features_test, target_test, btc_pipe)
