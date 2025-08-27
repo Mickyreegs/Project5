@@ -7,33 +7,39 @@ def page_summary_body():
     # text based on README file - "Dataset Content" section
     st.info(
         f"**Project Terms & Jargon**\n"
-        f"* A **customer** is a person who consumes your service or product.\n"
-        f"* A **prospect** is a potential customer.\n"
-        f"* A **churned** customer is a user who has stopped using your product or service.\n "
-        f"* This customer has a **tenure** level, the number of months this person " 
-        f"has used our product/service.\n\n"
+        f"* **BitCoin Close** is the daily BitCoin price at close of business.\n"
+        f"* **Nasdaq Close** is the daily Nasdaq index price at close of business.\n"
+        f"* **Gold Close** is the daily Gold price at close of business.\n "
+        f"* **CPI** is the Consumer Price Index - An indexed measure of inflation.\n "
+        f"* **Ten Year Treasury Yield** is the interest rate paid by the US government for borrowing.\n "
+        f"* **Fed Funds Rate** is the Federal Reserve interest rate. This is the interest rate at which U.S. banks lend reserve balances to one another overnight\n "
+        f"* **M2 Money Supply** is the amount of money in circulation in the US economy.\n "
+        f"* **VIX** is the CBOE Volatility Index - A gauge of market sentiment, or *The Fear Gauge*.\n "
+        f"* **Consumer Sentiment** measures how optimistic/pessimistic consumers feel on the economy.\n "
+        f"* **Real GDP** is the total value of goods & services produced in a country.\n "
+        f"* **Unemployment Rate** is the percentage of unemployed people actively seeking work .\n "
+        f"* **Retail Sales** is a measure of consumer demand.\n "
+        f"* **Debt to GDP** is the ratio of a country's debt to GDP.\n\n "
+        
         f"**Project Dataset**\n"
-        f"* The dataset represents a **customer base from a Telco company** "
-        f"containing individual customer data on the products and services "
-        f"(like internet type, online security, online backup, tech support), "
-        f"account information (like contract type, payment method, monthly charges) "
-        f"and profile (like gender, partner, dependents).")
+        f"* The dataset represents a **BitCoin closing prices** "
+        f"alongside market indicators (Nasdaq, Gold & Oil prices)  "
+        f"as well as macroeconomic indicators(e.g. Money Supply, Inflation, Interest Rates, Consumer Sentiment etc.)"
+        )
 
     # Link to README file, so the users can have access to full project documentation
     st.write(
         f"* For additional information, please visit and **read** the "
-        f"[Project README file](https://github.com/Code-Institute-Solutions/churnometer).")
+        f"[Project README file](https://github.com/Mickyreegs/Project5/blob/main/README.md).")
     
 
     # copied from README file - "Business Requirements" section
     st.success(
         f"The project has 2 business requirements:\n"
-        f"* 1 - The client is interested in understanding the patterns from the customer base "
-        f"so that the client can learn the most relevant variables that are correlated to a "
-        f"churned customer.\n"
-        f"* 2 - The client is interested in determining whether or not a given prospect will churn. "
-        f"If so, the client is interested to know when. In addition, the client is "
-        f"interested in learning from which cluster this prospect will belong in the customer base. "
-        f"Based on that, present potential factors that could maintain and/or bring  "
-        f"the prospect to a non-churnable cluster."
+        f"* 1 - Generate a dataset that uses only statistically relevant features to reduce data collection through the use of correlation analysis, "
+        f"PPS, and feature importance.  "
+        f"The client aims to reduce data collection costs and improve data governance, while also optimising model performance.\n"
+        f"* 2 - The client is interested in developing a model that predicts bitcoin price movements, initially set at 30 days ahead, "
+        f"based on macroeconomic factors, Nasdaq movements, Oil and Gold prices.  "
+        f"The client would like to support strategic decision making for use in entry and exit points in crypto portfolios."
         )
