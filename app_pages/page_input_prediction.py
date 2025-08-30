@@ -25,6 +25,12 @@ def page_input_prediction_body():
     with open("outputs/transformers/boxcox_lambdas.pkl", "rb") as f:
         boxcox_lambdas = pickle.load(f)
 
+    selected_date = st.date_input(
+    "Select reference date for economic indicators",
+    value=pd.Timestamp.today() - pd.Timedelta(days=30)
+    )
+    st.caption(f"Using data from: **{selected_date.strftime('%B %d, %Y')}**")
+
     # Draw input widgets
     X_live_raw = draw_bitcoin_user_inputs()
 
@@ -32,13 +38,20 @@ def page_input_prediction_body():
     if st.button("Run Predictive Analysis"):
         # Apply Box-Cox transformation using loaded lambdas
         X_live = pd.DataFrame([{
-            f"{feature}_boxcox": boxcox(X_live_raw[feature][0], lmbda=boxcox_lambdas[feature])
+            f"{feature}_lag30_boxcox" if feature != "Real_GDP" else "Real_GDP_lag30":
+            boxcox(X_live_raw[feature][0], lmbda=boxcox_lambdas[feature]) if feature != "Real_GDP" else X_live_raw[feature][0]
             for feature in X_live_raw.columns
         }])
 
-        predict_bitcoin_price(X_live, btc_features, btc_pipeline)
 
-        st.success("Complete! See below the forecasted BitCoin price.")
+        predict_bitcoin_price(
+            X_live, 
+            btc_features, 
+            btc_pipeline,
+            boxcox_lambdas,
+            residual_std=0.79,
+            reference_date=selected_date
+        )
 
 
 def draw_bitcoin_user_inputs():

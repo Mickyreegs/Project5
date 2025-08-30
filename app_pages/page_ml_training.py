@@ -66,6 +66,7 @@ def page_ml_training_body():
         f"\n"
         f""
     )
+    st.image("outputs/datasets/figs/linear_regression_vs_actual.png", caption="Feature Coefficients")
     regression_performance(
         features_train, target_train, 
         features_test, target_test, 
@@ -76,3 +77,5 @@ def page_ml_training_body():
         features_test, target_test, 
         btc_pipe
     )
+
+
