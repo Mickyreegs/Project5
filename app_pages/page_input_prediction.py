@@ -56,7 +56,7 @@ def draw_bitcoin_user_inputs():
         X_live[feature] = value
 
     with col3:
-        feature = "BitCoin_Close"
+        feature = "Bitcoin_Close"
         value = st.number_input(label=feature, value=30000.0)
         X_live[feature] = value
 
