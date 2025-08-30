@@ -8,7 +8,7 @@ from src.machine_learning.regression_perf_eval import (
 )
 
 
-def page_predict_btc_price_body():
+def page_ml_training_body():
 
     # load bitcoin pipeline files
     version = 'v2'

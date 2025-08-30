@@ -5,10 +5,10 @@ from scipy.stats import boxcox
 import pickle
 
 from src.machine_learning.data_management import load_pkl_file
-from src.machine_learning.predictors import predict_bitcoin_price  # Assuming this exists
+from src.machine_learning.predictive_analysis_ui import predict_bitcoin_price
 
 
-def page_prospect_body():
+def page_input_prediction_body():
     """Streamlit page for live Bitcoin price prediction using user input."""
 
     # Load pipeline and feature list
