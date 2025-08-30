@@ -38,7 +38,7 @@ def page_predict_btc_price_body():
     st.write("---")
 
     # show pipeline steps
-    st.write("* ML pipeline to predict tenure when prospect is expected to churn.")
+    st.write("* ML pipeline to predict BTC prices T+30.")
     st.write(btc_pipe)
     st.write("---")
 
@@ -47,6 +47,9 @@ def page_predict_btc_price_body():
     selected_features = features_train.columns.to_list()
     st.write(selected_features)
     st.write("---")
+
+    # show feature coefficients used by the model
+    st.image("outputs/datasets/figs/lr_coefficients.png", caption="Feature Coefficients")
 
     # evaluate performance on both sets
     st.write("### Pipeline Performance")
