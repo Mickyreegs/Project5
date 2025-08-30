@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 def page_corr_pps_study_body():
     st.title("Correlation and PPS Analysis")
@@ -46,8 +47,14 @@ def page_corr_pps_study_body():
     These features have high scores across all three metrics — PPS, Pearson, and Spearman.
     We will take the top 5 for modeling purposes.
     """)
+    filtered_features = pd.read_pickle("outputs/datasets/figs/filtered_features.pkl")
+    st.dataframe(filtered_features.head(5).style.format({
+    "Signal": "{:.3f}",
+    "PPS": "{:.3f}",
+    "Pearson": "{:.3f}",
+    "Spearman": "{:.3f}"
+    }))
 
-    st.dataframe(filtered_features.style.format({"Signal": "{:.3f}", "PPS": "{:.3f}", "Pearson": "{:.3f}", "Spearman": "{:.3f}"}))
 
 
     st.write("---")

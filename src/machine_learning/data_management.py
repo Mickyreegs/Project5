@@ -5,7 +5,9 @@ import joblib
 
 @st.cache_data
 def load_btc_data():
-    df = pd.read_pickle("outputs/datasets/final_features/BtcFinalFeatures_lag_boxcox.pkl")
+    df = pd.read_pickle(
+        "outputs/datasets/final_features/BtcFinalFeatures_lag_boxcox.pkl"
+        )
     return df
 
 
