@@ -22,7 +22,7 @@ def page_summary_body():
         f"* **Debt to GDP** is the ratio of a country's debt to GDP.\n\n "
         
         f"**Project Dataset**\n"
-        f"* The dataset represents a **BitCoin closing prices** "
+        f"* The dataset represents **BitCoin closing prices** "
         f"alongside market indicators (Nasdaq, Gold & Oil prices)  "
         f"as well as macroeconomic indicators(e.g. Money Supply, Inflation, Interest Rates, Consumer Sentiment etc.)"
         )

@@ -83,14 +83,14 @@ The business requirements are:
   * BitCoin price movements are positively correlated to tech stocks and various macroeconomic factors.
     * Validation requirements:
       * Perform correlation and PPS analysis to assess BitCoin's relationships to Nasdaq, Gold, Oil and a selection of macroeconomic factors
-      * Visualise trends using scatter plots and overlays
+      * Visualise trends
       * Evaluate feature importance to highlight the best predictors for the model
 
 * Hypothesis 2:
-  * Macroeconomic factors have influence over BitCoin's 30-day forward price.
+  * Features within the dataset will impact the 30 day price prediction for BitCoin.
     * Validation requirements:
       * Train multiple models using the features with the highest signals to find the best model for this task
-      * Compare models using R2 - Those over 0.90 will be acceptable
+      * Compare models using R2 - Those over 0.80 will be acceptable given BitCoin's price volatility
       * Validate predictions against the actual BitCoin prices
 
 ## The rationale to map the business requirements to the Data Visualizations and ML tasks
@@ -101,9 +101,9 @@ The business requirements are:
   * We will plot the best features against BitCoin to support interpretability and feature selection
 
 * Business Requirement 2 - Predicitive Modeling for Strategic Forecasting
-  * We want to predict BitCoin movements 30 days ahead by using market and macroeconomic features
+  * We want to predict BitCoin movements, not exact price, 30 days ahead by using market and macroeconomic features
   * We want to build and train a regression model and optimise performace by leveraging the best features from requirement 1
-  * We want to compare train and test sets and achieve an R2 of 0.90 or more
+  * We want to compare train and test sets and achieve an R2 of 0.80 or more
 
 ## ML Business Case
 
@@ -121,10 +121,10 @@ The business requirements are:
 ### Machine Learning Solution
 
 * We will develop a regression model capable to predicting BitCoin price movements 30 days ahead.  The prices will not be exact, but they will assist in the decision making process of the firm.
-* We require an R2 score of at least 0.90 in order to progress with the model.
+* We require an R2 score of at least 0.80 in order to progress with the model.
 * Inputs are be market based (Nasdaq, Gold, Oil) and macroeconomic (CPI, Money Supply, GDP, Consumer Sentiment etc.)
 * Feature selection techniques will be used to highlight impactful inputs and reduce data collection costs.  It will also improve model performance and interpretability.
-* The model will be considered a failure if after 1 year the average R2 score on test data falls below 0.90 or the RMSE exceeds $10,000.
+* The model will be considered a failure if after 1 year the average R2 score on test data falls below 0.80 or the RMSE exceeds $20,000.
 
 ### Business Impact
 

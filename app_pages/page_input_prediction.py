@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import boxcox
 import pickle
+import numpy as np
 
 from src.machine_learning.data_management import load_pkl_file
 from src.machine_learning.predictive_analysis_ui import predict_bitcoin_price
@@ -13,7 +14,7 @@ def page_input_prediction_body():
 
     # Load pipeline and feature list
     btc_pipeline = load_pkl_file(
-        "outputs/ml_pipeline/predict_btc_price/v2/btc_pipeline_lr.pkl"
+        "outputs/ml_pipeline/predict_btc_price/v2/btc_pipeline_rr.pkl"
     )
     btc_features_df = load_pkl_file(
         "outputs/datasets/final_features/BtcFinalFeatures_lag_boxcox.pkl"
@@ -46,18 +47,16 @@ def draw_bitcoin_user_inputs():
     X_live = pd.DataFrame([], index=[0])
 
     with col1:
-        feature = "Nasdaq_Close"
-        value = st.number_input(label=feature, value=15000.0)
-        X_live[feature] = value
+        X_live["Bitcoin_Close"] = st.number_input("Bitcoin Price (USD)", value=30000.0)
+        X_live["Nasdaq_Close"] = st.number_input("Nasdaq Index", value=15000.0)
 
     with col2:
-        feature = "M2_Money_Supply"
-        value = st.number_input(label=feature, value=21000000000.0)
-        X_live[feature] = value
+        X_live["CPI"] = st.number_input("Consumer Price Index", value=305.0)
+        X_live["Retail_Sales"] = st.number_input("Retail Sales (USD)", value=710000000000.0)
 
     with col3:
-        feature = "Bitcoin_Close"
-        value = st.number_input(label=feature, value=30000.0)
-        X_live[feature] = value
+        X_live["M2_Money_Supply"] = st.number_input("M2 Money Supply (USD)", value=21000000000.0)
+        X_live["Real_GDP"] = st.number_input("Real GDP (USD)", value=22000000000000.0)
 
     return X_live
+
