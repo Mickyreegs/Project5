@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 
+
 @st.cache_data
 def load_btc_data():
     df = pd.read_pickle(
