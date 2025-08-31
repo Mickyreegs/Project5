@@ -1,42 +1,6 @@
-# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# BitCoin 30-Day Forecaster
 
-## Template Instructions
-
-Welcome,
-
-This is the Code Institute student template for the bring your own data project option in Predictive Analytics. We have preinstalled all of the tools you need to get started. It's perfectly okay to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
-
-You can safely delete the Template Instructions section of this README.md file and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
-
-## How to use this repo
-
-1. Use this template to create your GitHub project repo
-
-1. In your newly created repo click on the green Code button.
-
-1. Then, from the Codespaces tab, click Create codespace on main.
-
-1. Wait for the workspace to open. This can take a few minutes.
-
-1. Open a new terminal and `pip3 install -r requirements.txt`
-
-1. Open the jupyter_notebooks directory, and click on the notebook you want to open.
-
-1. Click the kernel button and choose Python Environments.
-
-Note that the kernel says Python 3.12.1 as it inherits from the workspace, so it will be Python-3.12.1 as installed by Codespaces. To confirm this, you can use `! python --version` in a notebook code cell.
-
-## Cloud IDE Reminders
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+Welcome to the BitCoin 30 Day Forecaster, which aims to predict the price trend of BitCoin in 30 days based on macroeconomic and market factors.
 
 ## Dataset Content
 
@@ -132,29 +96,74 @@ The business requirements are:
 * The model will reduce data collection costs for the firm
 * The model will support strategic decision-making with real time forecasts
 
-## Dashboard Design
+## Dashboard Design (Streamlit App User Interface)
 
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
+### Page 1 - Quick Project Summary
+
+* Here, we listed the following:
+  * Jargon terms and explanations for the user
+  * A quick overview of the dataset being used
+  * The client business requirements
+
+### Page 2 - Project Hypothesis
+
+* Here, we list our 2 hypotheses and the confirmation as to whether the requirements were met or not
+
+### Page 3 - Correlation & PPS study
+
+* Here, we give the details of the following tests:
+  * Spearman Correlation - Heatmap displayed with detailing features above a threshold of 0.60
+  * Pearson Correlation - Heatmap displayed with detailing features above a threshold of 0.60
+  * Predictive Power Score (PPS) - Heatmap displayed with detailing features above a threshold of 0.60
+
+* From these tests, we determine the features to be used for modeling
+
+### Page 4 - ML Training Overview
+
+* Here, we described the steps involved in model selection and training, including:
+  * Feature Selection
+  * BitCoin history and distribution
+  * Trandformed features
+  * Key predictors
+  * Evaluation metrics
+  * Actual -v- Model prediction comparison
+  * Summary
+
+### Page 5 - Prediction Page
+
+* This is where we will make predictions on the price trend of BitCoin in 30 days time
+* The only user input will be the BitCoin price.  Users are encouraged to take this from [Coin Codex](https://coincodex.com/crypto/bitcoin/)
+* Macroeconomic features will be auto-filled using the FRED API - [FRED](https://fred.stlouisfed.org)
+* Nasdaq indices will be pulled from Yahoo Finance using Python's yfinance library
+* This will enhance user experience, especially for those not experienced in the macroeconomic values
 
 ## Unfixed Bugs
 
-* You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed.
+* There are no known bugs at present.
 
 ## Deployment
 
 ### Heroku
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/
-* Set the runtime.txt Python version to a [Heroku-24](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
+* The live app can be found here: [BitCoin 30-Day Forecaster](https://bitcoin-30day-forecast-8d17d38cb841.herokuapp.com/)
+* The runtime.txt Python version was set to Python 3.12.1
 * The project was deployed to Heroku using the following steps.
 
 1. Log in to Heroku and create an App
 2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+3. Search for the repository name, and once it is found, click Connect.
+4. Review the requirements.txt, runtime.txt and slugignore files:
+   - Make sure all requirements are included and remove the redundant ones irrelevant for deployment
+   - Make sure you include the correct version of Python in runtime.txt
+   - You can add large files to be ignored for deployment in the slugignore file.  We chose pycache and jupyter notebooks
+5. Ensure your Procfile is updated with web: sh setup.sh && streamlit run app.py
+6. Be sure to have your setup.sh file ready.  This is for Streamlit
+7. In the event you've hidden any API keys in a .env and applied in gitignore:
+   - Ensure python-dotenv is included in your requirements.txt file
+   - Go to Settings in Heroku, click Add Config Var, then insert the API Key Name and API key number and hit save.  This will ensure API calls are made seemlessly in Heroku
+8. Prior to clicking deploy, make sure the branch is set to Main
+9. The deployment process should happen smoothly if all deployment files are fully functional
+10. You can now open the app from the button in the top right corner of Heroku
 
 ## Main Data Analysis and Machine Learning Libraries
 
