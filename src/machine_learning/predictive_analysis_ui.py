@@ -1,5 +1,6 @@
 import streamlit as st
 from scipy.special import inv_boxcox
+import matplotlib.pyplot as plt
 
 def predict_bitcoin_price(X_live, btc_features, btc_pipeline, boxcox_lambdas, residual_std=0.79, reference_date=None):
     """
@@ -26,7 +27,7 @@ def predict_bitcoin_price(X_live, btc_features, btc_pipeline, boxcox_lambdas, re
     statement = (
         f"The model forecasts the Bitcoin price 30 days ahead to be approximately "
         f"**${predicted_price:,.2f}**.\n\n"
-        f"Expected range: **${lower:,.2f} - ${upper:,.2f}**."
+        f"Expected range: **\\${lower:,.2f} - \\${upper:,.2f}**."
     )
 
     # model confidence
@@ -42,3 +43,13 @@ def predict_bitcoin_price(X_live, btc_features, btc_pipeline, boxcox_lambdas, re
     # Display in Streamlit
     st.subheader("Bitcoin Price Forecast")
     st.success(statement)
+
+    # Prediction plot and confidence band
+    fig, ax = plt.subplots()
+    ax.plot([0], [predicted_price], marker='o', label='Predicted Price', color='blue')
+    ax.errorbar([0], [predicted_price], yerr=[[predicted_price - lower], [upper - predicted_price]], fmt='o', color='blue', capsize=10)
+    ax.set_title("Bitcoin Price Forecast (30 Days Ahead)")
+    ax.set_ylabel("Price (USD)")
+    ax.set_xticks([])
+    ax.legend()
+    st.pyplot(fig)
