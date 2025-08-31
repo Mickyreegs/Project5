@@ -192,7 +192,6 @@ The business requirements are:
 * Yahoo Finance via yfinance Python Library
 * Code Institute - Data Analysis and Machine Learning Toolkit Module
 
-
 ## Acknowledgements (optional)
 
-* A big thank you to the Code Institute for delivering an multi-industry relevant course and providing the tools required to progress in the realm of Data Science and Machine Learning.  I would recommend this course to anyone.
+* A big thank you to the Code Institute for delivering a course relevant to miltiple industries, and providing the tools required to progress in the realm of Data Science and Machine Learning.  I would recommend this course to anyone.
