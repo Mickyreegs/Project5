@@ -167,24 +167,32 @@ The business requirements are:
 
 ## Main Data Analysis and Machine Learning Libraries
 
-* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+| Library           | Use case                                                                                                                                     |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| Pandas            | Used in the datacleaning and transformation processes                                                                                        |
+| Numpy             | Used in numerical calculations and arrays                                                                                                    |
+| Scikit-Learn      | Use to test and train regression models, evaluate performance and build pipelines                                                            |
+| XG Boost          | Used for Gradient Boosting regression                                                                                                        |
+| Matplotlib        | Used for generating plots                                                                                                                    |
+| Streamlit         | Interactive dashboard for use in displaying outputs, running the final pipeline, rendering widgets, and deployment to Heroku                 |
+| yfinance          | Fetches Nasdaq, Oil and Gold price information                                                                                               |
+| FRED API          | Retrieves values for macroeconomic dataset and inputs from FRED website                                                                      |
 
 ## Credits
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism.
-* You can break the credits section up into Content and Media, depending on what you have included in your project.
-
 ### Content
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page were taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+* [Code Institute Malaria Detector Walkthrough Project](https://github.com/Code-Institute-Solutions/WalkthroughProject01)
+* [Code Institute Churnometer Walkthrough Project](https://github.com/Code-Institute-Solutions/churnometer)
+  * Chunks of code were applied to the BitCoin project from the Churnometer - Specifically regression code
+* [FRED](https://fred.stlouisfed.org)
+  * Data obtained via API
+* [Coin Codex](https://coincodex.com/crypto/bitcoin/)
+  * Approval requested and approved by Leo Daris - Content Manager at Coin Codex
+* Yahoo Finance via yfinance Python Library
+* Code Institute - Data Analysis and Machine Learning Toolkit Module
 
-### Media
-
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
 
 ## Acknowledgements (optional)
 
-* Thank the people who provided support through this project.
+* A big thank you to the Code Institute for delivering an multi-industry relevant course and providing the tools required to progress in the realm of Data Science and Machine Learning.  I would recommend this course to anyone.
