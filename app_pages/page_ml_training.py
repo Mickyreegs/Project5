@@ -51,22 +51,45 @@ def page_ml_training_body():
     st.write(selected_features)
     st.write("---")
 
-    # show feature coefficients used by the model
-    st.write("### Key Predictors")
-    st.info(
-        f"Of the features evaluated above, **Bitcoin's 30 day lagged price** and **Nasdaq's 30 day lagged price** were selected as the key predictors.\n"
-        f"Higher absolute values indicate stronger influence on the predicted Bitcoin price."
-    )
-    st.image("outputs/datasets/figs/linear_vs_ridge_coefficients.png", caption="Feature Coefficients")
-    st.write("---")
-
     # evaluate performance on both sets
     st.write("### Pipeline Performance")
     st.info(
-        f"\n"
-        f""
+        f"* BitCoin's recent history has shown a high level of volatility.  \n"
+        f"* Back in 2010, when prices were first being determined for BitCoin, it was very stable with a gradual increase.  \n"
+        f"* 2018 saw the first spike, followed by a reduction and a period of calm.  \n"
+        f"* This was followed by 2 spikes in 2021 and 2022.  \n"
+        f"* BitCoin has since reached record levels, and as at 31/07/2025 it closed at $170,800."
     )
-    st.image("outputs/datasets/figs/linear_regression_vs_actual.png", caption="Feature Coefficients")
+    st.image("outputs/datasets/figs/bitcoin_price_history.png", caption="BitCoin Price History")
+
+    st.info(
+        f"* As a result of this volatility, BitCoin's distribution is very skewed.  \n"
+        f"* See the below graph for reference."
+    )
+    st.image("outputs/datasets/figs/bitcoin_distribution.png", caption="BitCoin Distribution")
+
+    st.info(
+        f"* We use Box Cox transformation on the price and a number of features to help the model.  \n"
+        f"* This helped somewhat, but still isn't perfect.  See graph below of transformed features."
+    )
+
+    st.image("outputs/datasets/figs/feature_distributions_boxcox.png", caption="Transformed Features' Distributions")
+
+    st.info(
+        f"* We proceeded to train 3 models - Linear Regression, Rideg Regression & Lasso Regression.  \n"
+        f"* Linear and Ridge were very close in comparison.  We were able to drop Lasso early.  \n"
+        f"* Both models placed a large emphasis on the lagged BitCoin and Nasdaq close prices.  \n"
+        f"* These are seen as the **key predictors**. "
+    )
+
+    st.image("outputs/datasets/figs/linear_vs_ridge_coefficients.png", caption="Feature Coefficients")
+
+    st.info(
+        f"* In the end we selected Ridge Regression to predict our BitCoin 30 day price.  \n"
+        f"* The performance very slightly edged that of Linear Regression.  \n"
+        f"* The performance metrics can be seen below:  \n"
+    )
+
     regression_performance(
         features_train, target_train, 
         features_test, target_test, 
@@ -78,4 +101,13 @@ def page_ml_training_body():
         btc_pipe
     )
 
+    st.info(
+        f"* Finally, in reviewing the actual versus predicted price, we see decent performance from the model.  \n"
+        f"* The extreme volatility does at times cause misalignment, but the overall trend is good.  \n"
+        f"* We have achieved an R2 above our expectation of 0.85 and the RMSE is decent given BitCoin's volatility.  \n"
+        f"* We believe this is a good model to predict future trends for the client.  \n"
+        f"* It will assist the client with decision making for entry and exit points in crypto portfolios."
+    )
 
+    st.image("outputs/datasets/figs/linear_regression_vs_actual.png", caption="Feature Coefficients")
+    

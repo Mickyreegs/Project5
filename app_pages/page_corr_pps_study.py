@@ -1,34 +1,48 @@
 import streamlit as st
 import pandas as pd
 
+
 def page_corr_pps_study_body():
     st.title("Correlation and PPS Analysis")
 
     st.info("""
     This section explores how various features relate to Bitcoin price using:
-    - **Spearman Correlation**: tells us the monotonic relationship between features i.e. as one increases, the other increases or decreases, but not necessarily at the same rate.
-    - **Pearson Correlation**: Measures linear relationships
-    - **Predictive Power Score (PPS)**: Detects predictive strength, even for non-linear patterns
+    - **Spearman Correlation**:
+        tells us the monotonic relationship between features
+        i.e. as one increases, the other increases or decreases,
+        but not necessarily at the same rate.
+    - **Pearson Correlation**:
+        Measures linear relationships
+    - **Predictive Power Score (PPS)**:
+        Detects predictive strength, even for non-linear patterns
     """)
 
     st.write("---")
 
     # Spearman Correlation
     st.subheader("Spearman Correlation")
-    st.image("outputs/datasets/figs/spearman.png", caption="Spearman Correlation Heatmap")
+    st.image(
+        "outputs/datasets/figs/spearman.png",
+        caption="Spearman Correlation Heatmap"
+    )
     st.success("""
-    Spearman correlation is ideal for identifying monotonic trends. 
-    It shows strong associations between Bitcoin price and macro indicators like Nasdaq and CPI.
+    Spearman correlation is ideal for identifying monotonic trends.
+    It shows strong associations between Bitcoin price
+    and macro indicators like Nasdaq and CPI.
     """)
 
     st.write("---")
 
     # Pearson Correlation
     st.subheader("Pearson Correlation")
-    st.image("outputs/datasets/figs/pearson.png", caption="Pearson Correlation Heatmap")
+    st.image(
+        "outputs/datasets/figs/pearson.png",
+        caption="Pearson Correlation Heatmap"
+    )
     st.success("""
-    Pearson correlation highlights linear relationships. 
-    While some features show strong linear ties to Bitcoin price, others may be better captured by non-linear models.
+    Pearson correlation highlights linear relationships.
+    While some features show strong linear ties to Bitcoin price,
+    others may be better captured by non-linear models.
     """)
 
     st.write("---")
@@ -37,24 +51,32 @@ def page_corr_pps_study_body():
     st.subheader("Predictive Power Score (PPS)")
     st.image("outputs/datasets/figs/pps.png", caption="PPS Heatmap")
     st.success("""
-    PPS reveals predictive strength regardless of linearity. 
-    It helps identify features that may not correlate strongly but still carry predictive value.
+    PPS reveals predictive strength regardless of linearity.
+    It helps identify features that may not correlate strongly,
+    but still carry predictive value.
     """)
 
     # Signal Scores
     st.subheader("Filtered Features with Strong Predictive Signal")
     st.info("""
-    These features have high scores across all three metrics — PPS, Pearson, and Spearman.
+    These features have high scores across all three metrics:
+    PPS, Pearson, and Spearman.
     We will take the top 5 for modeling purposes.
     """)
-    filtered_features = pd.read_pickle("outputs/datasets/figs/filtered_features.pkl")
-    st.dataframe(filtered_features.head(5).style.format({
-    "Signal": "{:.3f}",
-    "PPS": "{:.3f}",
-    "Pearson": "{:.3f}",
-    "Spearman": "{:.3f}"
-    }))
+    filtered_features = pd.read_pickle(
+        "outputs/datasets/figs/filtered_features.pkl"
+    )
+    st.dataframe(
+        filtered_features.head(5).style.format({
+            "Signal": "{:.3f}",
+            "PPS": "{:.3f}",
+            "Pearson": "{:.3f}",
+            "Spearman": "{:.3f}"
+        })
+    )
 
     st.write("---")
-    st.info("Use this analysis to understand which features are most influential in forecasting Bitcoin price.")
-
+    st.info(
+        "Use this analysis to understand which features "
+        "are most influential in forecasting Bitcoin price."
+    )
