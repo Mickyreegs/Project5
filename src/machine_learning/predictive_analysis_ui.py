@@ -17,6 +17,7 @@ def predict_bitcoin_price(
     and display results in Streamlit.
     Applies inverse Box-Cox transformation
     and includes confidence band.
+    Plot the results on a Plotly chart.
     """
 
     # in the event of infinites or NaNs

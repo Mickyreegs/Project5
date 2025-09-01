@@ -14,6 +14,9 @@ def regression_performance(
         target_test,
         model
         ):
+    """
+    Pulled from Modeling and Evaluation notebook
+    """
     st.subheader("Model Evaluation Metrics")
 
     st.markdown("**Train Set Performance**")
@@ -24,6 +27,9 @@ def regression_performance(
 
 
 def regression_evaluation(features, target, model):
+    """
+    Pulled from Modeling and Evaluation notebook
+    """
     predictions = model.predict(features)
 
     st.write(f"**R² Score:** {r2_score(target, predictions):.3f}")
@@ -49,6 +55,9 @@ def regression_evaluation_plots(
         model,
         alpha_scatter=0.5
         ):
+    """
+    Pulled from Modeling and Evaluation notebook
+    """
     pred_train = model.predict(features_train)
     pred_test = model.predict(features_test)
 

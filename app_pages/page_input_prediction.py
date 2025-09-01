@@ -15,6 +15,9 @@ from src.machine_learning.predictive_analysis_ui import predict_bitcoin_price
 
 
 def get_nasdaq_close(date):
+    """
+    Fetch Nasdaq close prices from yfinance
+    """
     next_day = pd.to_datetime(date) + pd.Timedelta(days=1)
     data = yf.download(
         "^IXIC", start=date, end=next_day.strftime('%Y-%m-%d'), progress=False)
@@ -109,7 +112,10 @@ def page_input_prediction_body():
 
 
 def draw_bitcoin_user_inputs(defaults):
-    """Draw input widgets for Bitcoin prediction features."""
+    """
+    Draw input widgets for Bitcoin prediction features.
+    The only user input required is BitCoin price.
+    """
     col1, col2, col3 = st.columns(3)
     X_live = pd.DataFrame([], index=[0])
 
