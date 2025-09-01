@@ -6,6 +6,9 @@ from src.machine_learning.regression_perf_eval import (
     regression_performance,
     regression_evaluation_plots
 )
+from src.machine_learning.loaders import load_model_and_data
+from src.machine_learning.plotting import plot_actual_vs_predicted_plotly
+
 
 
 def page_ml_training_body():
@@ -142,7 +145,21 @@ def page_ml_training_body():
         f"entry and exit points in crypto portfolios."
     )
 
-    st.image(
-        "outputs/datasets/figs/linear_regression_vs_actual.png",
-        caption="Feature Coefficients"
+    # visualise actual versus prediction
+    st.header("Model Training Results")
+    st.caption("Hover over points to compare actual vs. predicted prices.")
+
+    model, features, target, selected_features = load_model_and_data()
+
+    lambda_target = 0.1347407526217442
+
+    fig = plot_actual_vs_predicted_plotly(
+        model=model,
+        features=features,
+        target=target,
+        selected_features=selected_features,
+        lambda_target=lambda_target
     )
+
+    st.plotly_chart(fig, use_container_width=True)
+

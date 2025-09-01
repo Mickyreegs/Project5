@@ -1,6 +1,7 @@
 import streamlit as st
 from scipy.special import inv_boxcox
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+import numpy as np
 
 
 def predict_bitcoin_price(
@@ -17,6 +18,18 @@ def predict_bitcoin_price(
     Applies inverse Box-Cox transformation
     and includes confidence band.
     """
+
+    # in the event of infinites or NaNs
+    if not np.isfinite(X_live.values).all():
+        st.warning(
+            "Your input data contains NaNs or infinite values. Cleaning now..."
+        )
+
+    # Replace inf/-inf with NaN
+    X_live.replace([np.inf, -np.inf], np.nan, inplace=True)
+
+    # Fill NaNs with median or zero (you can customize this)
+    X_live.fillna(X_live.median(), inplace=True)
 
     # Filter features
     X_live_btc = X_live.filter(btc_features)
@@ -60,25 +73,51 @@ def predict_bitcoin_price(
     st.subheader("Bitcoin Price Forecast")
     st.success(statement)
 
-    # Prediction plot and confidence band
-    fig, ax = plt.subplots()
-    ax.plot(
-        [0],
-        [predicted_price],
-        marker='o',
-        label='Predicted Price',
-        color='blue'
+    # Display out result on a graph for the user
+    fig = go.Figure()
+
+    # Predicted price
+    fig.add_trace(go.Scatter(
+        x=[0],
+        y=[predicted_price],
+        mode='markers',
+        name='Predicted Price',
+        marker=dict(color='blue', size=10),
+        hovertext=[f"Predicted: ${predicted_price:,.2f}"],
+        hoverinfo="text"
+    ))
+
+    # Lower range
+    fig.add_trace(go.Scatter(
+        x=[-0.2],
+        y=[lower],
+        mode='markers',
+        name='Lower Range',
+        marker=dict(color='green', size=8),
+        hovertext=[f"Lower Range: ${lower:,.2f}"],
+        hoverinfo="text"
+    ))
+
+    # Upper range
+    fig.add_trace(go.Scatter(
+        x=[0.2],
+        y=[upper],
+        mode='markers',
+        name='Upper Range',
+        marker=dict(color='red', size=8),
+        hovertext=[f"Upper Range: ${upper:,.2f}"],
+        hoverinfo="text"
+    ))
+
+    # Layout
+    fig.update_layout(
+        title="Bitcoin Price Forecast (30 Days Ahead)",
+        yaxis_title="Price (USD)",
+        xaxis=dict(showticklabels=False, range=[-0.5, 0.5]),
+        hovermode="closest",
+        showlegend=True
     )
-    ax.errorbar(
-        [0],
-        [predicted_price],
-        yerr=[[predicted_price - lower], [upper - predicted_price]],
-        fmt='o',
-        color='blue',
-        capsize=10
-    )
-    ax.set_title("Bitcoin Price Forecast (30 Days Ahead)")
-    ax.set_ylabel("Price (USD)")
-    ax.set_xticks([])
-    ax.legend()
-    st.pyplot(fig)
+
+    st.caption("Hover over points to view results.")
+
+    st.plotly_chart(fig, use_container_width=True)

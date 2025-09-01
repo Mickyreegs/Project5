@@ -169,7 +169,7 @@ The business requirements are:
 
 | Library           | Use case                                                                                                                                     |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| Pandas            | Used in the datacleaning and transformation processes                                                                                        |
+| Pandas            | Used in the data cleaning and transformation processes                                                                                       |
 | Numpy             | Used in numerical calculations and arrays                                                                                                    |
 | Scikit-Learn      | Use to test and train regression models, evaluate performance and build pipelines                                                            |
 | XG Boost          | Used for Gradient Boosting regression                                                                                                        |
@@ -184,13 +184,20 @@ The business requirements are:
 
 * [Code Institute Malaria Detector Walkthrough Project](https://github.com/Code-Institute-Solutions/WalkthroughProject01)
 * [Code Institute Churnometer Walkthrough Project](https://github.com/Code-Institute-Solutions/churnometer)
-  * Chunks of code were applied to the BitCoin project from the Churnometer - Specifically regression code
+  * Chunks of code were applied to the BitCoin project from the Churnometer - Specifically regression code and transformers
 * [FRED](https://fred.stlouisfed.org)
   * Data obtained via API
 * [Coin Codex](https://coincodex.com/crypto/bitcoin/)
   * Approval requested and approved by Leo Daris - Content Manager at Coin Codex
 * Yahoo Finance via yfinance Python Library
 * Code Institute - Data Analysis and Machine Learning Toolkit Module
+* [Pandas Documentation](https://pandas.pydata.org/docs/)
+* [python.org](https://docs.python.org/3/)
+* [Matplotlib Documentation](https://matplotlib.org/stable/users/index.html)
+* [Plotly](https://plotly.com/python/financial-charts/)
+* [Scikit-Learn](https://scikit-learn.org/stable/user_guide.html)
+* [Numpy](https://numpy.org/doc/stable/)
+* [Streamlit](https://docs.streamlit.io/develop/api-reference)
 
 ## Acknowledgements (optional)
 
