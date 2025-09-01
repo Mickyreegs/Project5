@@ -8,7 +8,8 @@ from app_pages.page_corr_pps_study import page_corr_pps_study_body
 from app_pages.page_ml_training import page_ml_training_body
 from app_pages.page_input_prediction import page_input_prediction_body
 
-app = MultiPage(app_name= "BitCoin Price Predictor") # Create an instance of the app 
+# Create an instance of the app
+app = MultiPage(app_name="BitCoin Price Predictor")
 
 # Add your app pages here using .add_page()
 app.add_page("Quick Project Summary", page_summary_body)
@@ -17,4 +18,5 @@ app.add_page("Correlation and PPS Analysis", page_corr_pps_study_body)
 app.add_page("ML: BitCoin ML Model Training", page_ml_training_body)
 app.add_page("ML: BitCoin 30 Day Prediction", page_input_prediction_body)
 
-app.run() # Run the  app
+# Run the  app
+app.run()

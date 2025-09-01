@@ -1,23 +1,26 @@
 import plotly.graph_objects as go
 from scipy.special import inv_boxcox
 
+
 def plot_actual_vs_predicted_plotly(
         model,
         features,
         target,
         selected_features,
         lambda_target,
-    ):
+        ):
 
     """
-    Create an interactive Plotly chart comparing actual vs. predicted Bitcoin prices.
+    Create an interactive Plotly chart
+    comparing actual vs. predicted Bitcoin prices.
     """
 
     preds = model.predict(features[selected_features])
     preds_bt = inv_boxcox(preds, lambda_target)
     actual_bt = inv_boxcox(target, lambda_target)
 
-    dates = list(range(len(target))) # date was cut from the final dataset
+    # date was cut from the final dataset
+    dates = list(range(len(target)))
 
     fig = go.Figure()
 

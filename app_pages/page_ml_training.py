@@ -10,7 +10,6 @@ from src.machine_learning.loaders import load_model_and_data
 from src.machine_learning.plotting import plot_actual_vs_predicted_plotly
 
 
-
 def page_ml_training_body():
 
     # load bitcoin pipeline files
@@ -162,4 +161,3 @@ def page_ml_training_body():
     )
 
     st.plotly_chart(fig, use_container_width=True)
-
