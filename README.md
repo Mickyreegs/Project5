@@ -174,6 +174,7 @@ The business requirements are:
 | Scikit-Learn      | Use to test and train regression models, evaluate performance and build pipelines                                                            |
 | XG Boost          | Used for Gradient Boosting regression                                                                                                        |
 | Matplotlib        | Used for generating plots                                                                                                                    |
+| Plotly            | Used for generating interactive plots                                                                                                        |
 | Streamlit         | Interactive dashboard for use in displaying outputs, running the final pipeline, rendering widgets, and deployment to Heroku                 |
 | yfinance          | Fetches Nasdaq, Oil and Gold price information                                                                                               |
 | FRED API          | Retrieves values for macroeconomic dataset and inputs from FRED website                                                                      |
@@ -198,6 +199,7 @@ The business requirements are:
 * [Scikit-Learn](https://scikit-learn.org/stable/user_guide.html)
 * [Numpy](https://numpy.org/doc/stable/)
 * [Streamlit](https://docs.streamlit.io/develop/api-reference)
+* [W3 Schools](https://www.w3schools.com/)
 
 ## Acknowledgements (optional)
 
